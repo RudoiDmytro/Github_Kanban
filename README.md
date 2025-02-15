@@ -44,6 +44,26 @@ A simple React application that displays GitHub repository issues as a Kanban bo
 
     Open your browser and navigate to `http://localhost:3000`. (or the port specified on your console)
 
+# Environment Variables and API Authentication
+
+This application interacts with the GitHub API to fetch issue data and repository statistics. To enhance security and potentially increase the API rate limit, the following header has been added to the GitHub API requests:
+
+Authorization: Bearer ${import.meta.env.VITE_BEARER}
+
+'X-GitHub-Api-Version': '2022-11-28'
+
+An API token is used for authenticating with the Github API. If you want to use it, make sure you set your API token in the `.env` file with the following:
+
+VITE_BEARER=YOUR_API_TOKEN_HERE
+
+### Removing Headers (Optional)
+
+While these headers are included for enhanced security and to avoid rate limiting, you have the option to remove them if you prefer. Here's how:
+
+1.  **Locate the Axios Requests:** Find the code in `useIssues.ts` where the Axios requests are made to the GitHub API.
+2.  **Remove or Comment Out Headers:** You can either completely remove the `headers` object or comment it out.
+3.  **Test Your Application:** After removing or commenting out the headers, thoroughly test your application to ensure it's still functioning correctly and that you're not encountering rate limit issues.
+
 ## Running Tests
 
 1.  **Ensure the app is running** `npm run dev`.
