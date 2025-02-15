@@ -1,50 +1,75 @@
-# React + TypeScript + Vite
+# GitHub Issues Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application that displays GitHub repository issues as a Kanban board, allowing users to visualize and manage their workflow.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Repository Issue Loading:** Enter a GitHub repository URL to load its issues using the GitHub API.
+*   **Kanban Board:** Displays issues in three columns: To Do, In Progress, and Done.
+*   **Drag-and-Drop:**  Drag and drop issues between columns to update their status.
+*   **Persistence:** Saves the Kanban board state (column and order of issues) in local storage, so changes persist across browser sessions and searches.
+*   **Repository and Owner Links:** Provides links to visit the repository and its owner's profile on GitHub.
+*   **Responsive Design:** Adapts to different screen sizes with a responsive layout.
+*   **Animations:**  Adds delightful animations using CSS and simple calculations, making the board more interactive.
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*   **React 18:**  A JavaScript library for building user interfaces.
+*   **TypeScript:**  A typed superset of JavaScript.
+*   **Ant Design:**  A React UI library.
+*   **Zustand:**  A small, fast, and scalable bearbones state-management solution.
+*   **@hello-pangea/dnd:** A Drag and Drop library.
+*   **Axios:** Promise based HTTP client for the browser and node.js
 
-- Configure the top-level `parserOptions` property like this:
+## Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1.  **Clone the repository:**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    ```bash
+    git clone https://github.com/RudoiDmytro/Github_Kanban
+    cd Github_Kanban
+    ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2.  **Install dependencies:**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+    ```bash
+    npm install  # or yarn install
+    ```
+
+3.  **Start the development server:**
+
+    ```bash
+    npm run dev # or yarn run dev
+    ```
+
+    Open your browser and navigate to `http://localhost:3000`. (or the port specified on your console)
+
+## Running Tests
+
+1.  **Ensure the app is running** `npm run dev`.
+2.  **Open Cypress:**
+
+    ```bash
+    npx cypress open
+    ```
+
+3.  **Run the tests.**
+
+## Usage
+
+1.  Enter the GitHub repository URL in the input field at the top of the page (e.g., `https://github.com/facebook/react`).
+2.  Click the "Load" button.
+3.  The application will fetch the issues from the repository and display them in the Kanban board columns based on their status:
+    *   **To Do:** New issues or issues without an assignee.
+    *   **In Progress:** Issues that are currently being worked on (assigned to someone).
+    *   **Done:** Closed issues.
+4.  Drag and drop issues between columns to change their status.  The changes will be saved in local storage.
+5.  Click the links below the input field to visit the repository owner's profile or the repository itself on GitHub.
+
+## Key Components
+
+*   **`RepoInput.tsx`:**  Handles the input of the GitHub repository URL and triggers the issue loading process.
+*   **`KanbanBoard.tsx`:**  Renders the Kanban board with the three columns.
+*   **`KanbanColumn.tsx`:**  Renders each column of the Kanban board and handles drag-and-drop functionality.
+*   **`IssueCard.tsx`:**  Renders each individual issue card, displaying its title, author, and other relevant information.
+*   **`useKanbanStore.ts`:**  Zustand store that manages the application state (repository URL, issues, column assignments).
