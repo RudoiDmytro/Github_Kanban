@@ -21,14 +21,14 @@ export type Issue = {
 
 export type ColumnType = 'todo' | 'inProgress' | 'done'
 
+export type Columns = {
+	[key in ColumnType]: Issue[]
+}
+
 export type KanbanState = {
 	repoUrl: string
 	stars: number | null
-	columns: {
-		todo: Issue[]
-		inProgress: Issue[]
-		done: Issue[]
-	}
+	columns: Columns
 	setRepoUrl: (url: string) => void
 	setStars: (stars: number) => void
 	moveIssue: (

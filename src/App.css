@@ -2,64 +2,6 @@
 	text-align: center;
 }
 
-.App-header {
-	background-color: #f0f2f5;
-	min-height: 20vh;
-	gap: 0.5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: black;
-	padding: 20px;
-}
-
-.App-header > h1 {
-	font-size: calc(20px + 4vmin);
-}
-
-.App-header > div {
-	display: flex;
-	gap: 1rem;
-	width: 50%;
-	align-items: center;
-	justify-content: start;
-	font-size: x-large;
-}
-
-.star {
-	display: inline-flex;
-	align-items: center;
-}
-
-.star > a {
-	text-decoration: none;
-}
-
-a:visited  {
-	color: blue;
-}
-
-.star > span {
-	display: flex;
-	align-items: center;
-}
-
-.App-header > div > input {
-	margin-right: 10px;
-}
-
-.App-header > div > button {
-	background-color: aquamarine;
-}
-
-img {
-	width: 100%;
-	max-width: 40px;
-	vertical-align: middle;
-}
-
 main {
 	padding: 20px;
 }
@@ -68,8 +10,21 @@ main {
 	height: 100%;
 }
 
-.kanbanBoard {
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	display: flex;
-	justify-content: space-around;
-	padding: 20px;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+.repoInput {
+	display: flex;
+	width: 50%;
+	gap: 1rem;
 }

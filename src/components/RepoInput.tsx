@@ -8,11 +8,13 @@ type RepoInputProps = {
 }
 
 const RepoInput = ({ setLoading, setError }: RepoInputProps) => {
-	const { inputValue, setInputValue, loadIssues } = useIssues({ setLoading, setError });
-
+	const { inputValue, setInputValue, loadIssues } = useIssues({
+		setLoading,
+		setError
+	})
 
 	return (
-		<div>
+		<div className='repoInput'>
 			<Input
 				placeholder='Enter GitHub repository URL (e.g., https://github.com/facebook/react)'
 				value={inputValue}

@@ -1,20 +1,30 @@
 import { Card, Avatar, Typography } from 'antd'
-import { Issue } from '../types/types'
+import { Issue } from '../../types/types'
 import { Draggable } from '@hello-pangea/dnd'
-import { animated, useSpring } from '@react-spring/web'
+import { animated, SpringValue, useSpring } from '@react-spring/web'
+import { ReactNode } from 'react'
+import styles from './Kanban.module.css'
 
 type KanbanCardProps = {
 	issue: Issue
 	index: number
 }
 
+const AnimatedDiv = animated.div as React.FC<{
+	children: ReactNode
+	ref: (element?: HTMLElement | null | undefined) => void
+	style?: {
+		backgroundColor: SpringValue<string>
+		boxShadow: SpringValue<string>
+	}
+	className?: string
+}>
+
 const KanbanCard = ({ issue, index }: KanbanCardProps) => {
 	const [springProps, api] = useSpring(() => ({
 		backgroundColor: 'white',
 		boxShadow: 'none'
 	}))
-	
-	const AnimatedDiv = animated.div as any
 
 	return (
 		<Draggable
@@ -39,11 +49,8 @@ const KanbanCard = ({ issue, index }: KanbanCardProps) => {
 						ref={provided.innerRef}
 						{...provided.draggableProps}
 						{...provided.dragHandleProps}
+						className={styles.kanbanCard}
 						style={{
-							marginBottom: '8px',
-							padding: '8px',
-							border: '1px solid #ccc',
-							borderRadius: '4px',
 							...provided.draggableProps.style,
 							...springProps
 						}}

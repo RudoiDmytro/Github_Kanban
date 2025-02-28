@@ -1,0 +1,49 @@
+.header {
+	background-color: #f0f2f5;
+	min-height: 20vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: black;
+	padding: 20px;
+	gap: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.header h1 {
+	font-size: calc(20px + 4vmin);
+}
+
+.repoInfo {
+	display: flex;
+	gap: 1rem;
+	width: 50%;
+	align-items: center;
+	justify-content: start;
+	font-size: x-large;
+}
+
+.repoInfo a {
+	text-decoration: none;
+	color: blue;
+}
+
+.star {
+	display: inline-flex;
+	align-items: center;
+}
+
+.star img {
+	width: 40px;
+	vertical-align: middle;
+}
+
+.repoInfo input {
+	margin-right: 10px;
+}
+
+.repoInfo button {
+	background-color: aquamarine;
+}
